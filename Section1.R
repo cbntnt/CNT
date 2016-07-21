@@ -27,11 +27,14 @@ ui <- fluidPage(sliderInput(inputId = "num",
 server <- function(input, output) {
   output$hist <- renderPlot({
     title <- "100 random normal values"
-    hist(rnorm(100), main = title)
+    hist(rnorm(input$num), main = title)
     })
 }
 shinyApp(ui = ui, server = server)
 
 # Share app at 26min mark of video
+library(devtools)
+devtools::install_github("rmdexamples", "rstudio")
 
-
+library(rmdexamples)
+kmeans_cluster(iris)
